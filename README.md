@@ -6,9 +6,10 @@ small projects with minimal dependencies.
 The purpose of this starter app is to provide a few of the benefits of working on an Angular app while
 creating a small project, namely:
  - TypeScript support.
+ - sass/scss support.
  - Building with webpack.
  - Testing with webpack-dev-server, having code automatically recompiled and your app relaunched
- everytime you make code changes.
+ whenever you make code changes.
  - Built-in support for unit testing with Karma.
  - Built-in support for end-to-end testing with Protractor.
 
