@@ -4,21 +4,20 @@
 module.exports = function (config) {
   config.set({
     basePath: '',
-    frameworks: ['jquery-3.2.1', 'jasmine-jquery', 'jasmine'],
+    frameworks: ['jasmine'],
     plugins: [
       'karma-jasmine',
-      'karma-jasmine-jquery',
       'karma-chrome-launcher',
       'karma-jasmine-html-reporter',
       'karma-coverage-istanbul-reporter',
       'karma-webpack',
       'karma-jquery'
     ],
-    client:{
+    client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     coverageIstanbulReporter: {
-      reports: [ 'html', 'lcovonly' ],
+      reports: ['html', 'lcovonly'],
       fixWebpackSourcePaths: true
     },
     reporters: ['progress', 'kjhtml'],

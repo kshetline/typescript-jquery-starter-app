@@ -1,3 +1,5 @@
+import * as $ from 'jquery';
+
 describe('main', () => {
   let jqdiv;
 

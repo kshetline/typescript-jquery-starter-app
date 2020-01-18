@@ -1,10 +1,9 @@
 const path = require('path');
-const webpack = require('webpack');
-
-const ROOT = path.resolve( __dirname, 'src' );
-const DESTINATION = path.resolve( __dirname, 'dist' );
+const ROOT = path.resolve(__dirname, 'src');
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
+  mode: NODE_ENV,
   context: ROOT,
 
   resolve: {
@@ -27,8 +26,13 @@ module.exports = {
       // LOADERS
       {
         test: /\.ts$/,
-        exclude: [ /node_modules/ ],
-        use: 'ts-loader'
+        exclude: [/node_modules/],
+        use: {
+          loader: 'ts-loader',
+          options: {
+            transpileOnly: true
+          }
+        }
       }
     ]
   },

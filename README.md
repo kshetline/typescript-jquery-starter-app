@@ -19,7 +19,7 @@ Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app 
 
 ## Linting
 
-Run `npm run lint` to inspect your code with [TSLint](https://palantir.github.io/tslint/).
+Run `npm run lint` to inspect your code with [ESLint](https://eslint.org/).
 
 ## Build
 

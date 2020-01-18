@@ -1,3 +1,5 @@
+/* eslint-disable prefer-promise-reject-errors */
+
 const { SpecReporter } = require('jasmine-spec-reporter');
 const spawn = require('child_process').spawn;
 let webpackServerProcess;
@@ -9,7 +11,7 @@ function sendToStderr(s) {
   s = s.replace(/\x08+/g, '\n');
   stderrBuffer += s;
 
-  let eol = stderrBuffer.lastIndexOf('\n');
+  const eol = stderrBuffer.lastIndexOf('\n');
 
   if (eol >= 0) {
     process.stderr.write(stderrBuffer.substring(0, eol + 1));
@@ -30,7 +32,7 @@ exports.config = {
     './e2e/**/*.e2e-spec.ts'
   ],
   capabilities: {
-    'browserName': 'chrome'
+    browserName: 'chrome'
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
@@ -38,14 +40,14 @@ exports.config = {
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000,
-    print: function() {}
+    print: function () {}
   },
   beforeLaunch() {
     return new Promise((resolve, reject) => {
       let resolved = false;
       let rejected = false;
 
-      webpackServerProcess = spawn('webpack-dev-server', ['--port=4200']);
+      webpackServerProcess = spawn('webpack-dev-server', ['--mode=development', '--port=4200']);
       webpackServerProcess.stdout.pipe(process.stdout);
 
       webpackServerProcess.stdout.addListener('data', chunk => {
@@ -92,6 +94,7 @@ exports.config = {
     require('ts-node').register({
       project: 'e2e/tsconfig.e2e.json'
     });
+    // noinspection JSCheckFunctionSignatures
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
   },
   onCleanUp() {
